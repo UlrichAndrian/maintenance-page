@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oups ! On recommence Univako!</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #1a1a1a;
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      overflow: hidden;
+      color: #ffffff;
+    }
+    .container {
+      text-align: center;
+      z-index: 10;
+    }
+    .site-title {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      animation: fadeInUp 2s ease-out, colorChange 10s infinite alternate, highlightChange 5s infinite alternate;
+    }
+    .highlight {
+      animation: colorCycle 5s infinite;
+    }
+    .message {
+      font-size: 32px;
+      margin-bottom: 20px;
+      animation: textAnimation 10s infinite alternate, colorChange 20s infinite;
+    }
+    .emoji {
+      font-size: 48px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-around;
+      animation: colorChange 20s infinite;
+    }
+    .emoji span {
+      display: inline-block;
+    }
+    .emoji .emoji-1 {
+      animation: rotate 4s infinite linear;
+    }
+    .emoji .emoji-2 {
+      animation: bounce 2s infinite alternate;
+    }
+    .emoji .emoji-3 {
+      animation: shake 1s infinite;
+    }
+    @keyframes colorChange {
+      0% { color: #ffffff; }
+      20% { color: #ffffff; }
+      40% { color: #ffffff; }
+      60% { color: #000000; }
+      80% { color: #000000; }
+      100% { color: #ffffff; }
+    }
+    @keyframes colorCycle {
+      0% { color: #00ffcc; }
+      20% { color: #264653; }
+      40% { color: #2a9d8f; }
+      60% { color: #e9c46a; }
+      80% { color: #f4a261; }
+      100% { color: #e76f51; }
+    }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes shake {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      25%, 75% {
+        transform: translateX(-10px);
+      }
+      50% {
+        transform: translateX(10px);
+      }
+    }
+    @keyframes textAnimation {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+      }
+    }
+    @keyframes backgroundAnimation {
+      0%, 100% {
+        background: linear-gradient(45deg, #1a1a1a, #00ffcc, #264653, #2a9d8f, #e9c46a, #f4a261, #e76f51);
+        background-size: 400% 400%;
+      }
+      50% {
+        background-position: 100% 100%;
+      }
+    }
+    .background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      overflow: hidden;
+      animation: backgroundAnimation 30s infinite;
+    }
+    .line {
+      position: absolute;
+      width: 2px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      animation: moveLine 10s linear infinite alternate;
+    }
+    .line-horizontal {
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      animation: moveLineHorizontal 15s linear infinite alternate;
+    }
+    @keyframes moveLine {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-100%);
+      }
+    }
+    @keyframes moveLineHorizontal {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    .circle {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: moveCircle 20s linear infinite alternate;
+    }
+    @keyframes moveCircle {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(300px, 300px);
+      }
+    }
+    .tech-line {
+      position: absolute;
+      width: 100px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.2);
+      animation: techMove 10s linear infinite alternate;
+    }
+    @keyframes techMove {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(400px, -400px);
+      }
+    }
+    @keyframes highlightChange {
+      0%, 100% {
+        color: #00ffcc;
+      }
+      50% {
+        color: #e76f51;
+      }
+    }
+    .highlighted {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      animation: colorCycle 5s infinite, zoomInOut 5s infinite;
+    }
+    @keyframes zoomInOut {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+    }
+    @keyframes fadeInUpOups {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .oups {
+      font-size: 64px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      animation: fadeInUpOups 2s ease-out, colorChange 10s infinite alternate, highlightChange 5s infinite alternate;
+    }
+    .countdown {
+      font-size: 48px;
+      font-weight: bold;
+      margin-top: 20px;
+      animation: colorCycle 5s infinite;
+    }
+    .countdown p {
+      margin-bottom: 10px;
+    }
+    .countdown .countdown-item {
+      display: inline-block;
+      margin: 0 10px;
+    }
+    .btn-primary {
+      background-color: #00ffcc;
+      border-color: #00ffcc;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #e76f51;
+      border-color: #e76f51;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .site-title {
+        font-size: 36px;
+      }
+      .highlighted {
+        font-size: 36px;
+      }
+      .message {
+        font-size: 24px;
+      }
+      .emoji {
+        font-size: 36px;
+      }
+      .countdown {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background">
+    <div class="line" style="left: 10%;"></div>
+    <div class="line" style="left: 30%;"></div>
+    <div class="line" style="left: 50%;"></div>
+    <div class="line" style="left: 70%;"></div>
+    <div class="line" style="left: 90%;"></div>
+    <div class="line-horizontal" style="top: 20%;"></div>
+    <div class="line-horizontal" style="top: 40%;"></div>
+    <div class="line-horizontal" style="top: 60%;"></div>
+    <div class="line-horizontal" style="top: 80%;"></div>
+    <div class="line-horizontal" style="top: 100%;"></div>
+    <div class="circle" style="top: 20%; left: 10%;"></div>
+    <div class="circle" style="top: 40%; left: 30%;"></div>
+    <div class="circle" style="top: 60%; left: 50%;"></div>
+    <div class="circle" style="top: 80%; left: 70%;"></div>
+    <div class="circle" style="top: 100%; left: 90%;"></div>
+    <div class="tech-line" style="top: 10%; left: 20%;"></div>
+    <div class="tech-line" style="top: 50%; left: 40%;"></div>
+    <div class="tech-line" style="top: 70%; left: 80%;"></div>
+    <div class="tech-line" style="top: 30%; left: 40%;"></div>
+    <div class="tech-line" style="top: 70%; left: 60%;"></div>
+    <div class="tech-line" style="top: 10%; left: 80%;"></div>
+    <div class="tech-line" style="top: 50%; left: 20%;"></div>
+  </div>
+  <div class="container">
+    <div class="site-title oups">OUPS !</div>
+    <div class="highlighted">Univako ce n'est pas comme ça</div>
+    <div class="message">J'ai réussi à faire un sacré bazar sur ce projet 😅</div>
+    <div class="emoji">
+      <span class="emoji-1">🤦‍♂️</span>
+      <span class="emoji-2">🛠️</span>
+      <span class="emoji-3">💥</span>
+    </div>
+    <button onclick="startCountdown()" class="btn btn-primary mt-4">Quand est-ce que le site sera en ligne ?</button>
+    <div id="timeline" class="mt-4" style="display: none;">
+      <div class="countdown" id="countdown"></div>
+    </div>
+  </div>
+
+  <script>
+    function startCountdown() {
+      const button = document.querySelector('.btn');
+      button.style.display = 'none';
+  
+      const timeline = document.getElementById('timeline');
+      timeline.style.display = 'block';
+  
+      const countdown = document.getElementById('countdown');
+      const countdownMessages = [
+        'Dans 90j 22h 15min ',
+        'Erreur réseau...',
+        'Dans 15j 22h 8min ',
+        'Erreur site...',
+        'Dans un futur très, très proche (ou pas)...',
+        'Erreur développeur...'
+      ];
+  
+      let messageIndex = 0;
+      let attempts = 3;
+  
+      const interval = setInterval(() => {
+        if (messageIndex < countdownMessages.length) {
+          countdown.innerHTML = countdownMessages[messageIndex];
+          messageIndex++;
+        } else {
+          clearInterval(interval);
+          countdown.textContent = "Je ne sais pas encore 🤷‍♂️";
+          timeline.innerHTML += "<p>Cela dépend de ma créativité...</p>";
+        }
+  
+        // Insert random error message after a certain number of attempts
+        if (attempts === 6) {
+          const randomError = errorMessages[Math.floor(Math.random() * errorMessages.length)];
+          countdown.innerHTML = randomError;
+          attempts++; // increment attempts to prevent continuous errors
+        } else {
+          attempts++;
+        }
+      }, 4000); // 4 seconds interval for humor effect
+    }
+  </script>
+</body>
+</html>
